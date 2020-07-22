@@ -3,13 +3,13 @@ import React from "react";
 import Header from "./Header";
 
 import "normalize.css";
-import "../assets/fonts.css";
+import "../../assets/fonts.css";
 
 const styles = {
   fullWidthHeaderContainer: {
     background: "#e53411",
   },
-  headerContainer: {
+  container: {
     maxWidth: "960px",
     margin: "0 auto",
   },
@@ -19,9 +19,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <header style={styles.fullWidthHeaderContainer}>
-        <Header style={styles.headerContainer} />
+        <Header style={styles.container} />
       </header>
-      {children}
+      <section style={styles.container}>{children}</section>
     </>
   );
 };

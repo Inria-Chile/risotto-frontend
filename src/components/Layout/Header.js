@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../assets/inria-white.png";
+import logo from "../../assets/inria-white.png";
 
 const styles = {
   container: {
