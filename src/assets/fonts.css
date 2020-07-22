@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "InriaSans";
+  src: url("./InriaSans-Regular.ttf") format("truetype");
+}
+body {
+  font-family: "InriaSans";
+}
