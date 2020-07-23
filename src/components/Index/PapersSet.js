@@ -8,9 +8,6 @@ const PaperSet = ({
   papers,
   page,
 }) => {
-  if (!papers) {
-    return "Cargando...";
-  }
   return (
     <section>
       <p>{numResults.toLocaleString()} results</p>
