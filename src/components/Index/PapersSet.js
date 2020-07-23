@@ -2,8 +2,6 @@ import React from "react";
 
 import PaperCard from "./PaperCard";
 
-const styles = {};
-
 const PaperSet = ({
   num_pages: numPages,
   num_results: numResults,

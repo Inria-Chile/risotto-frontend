@@ -12,19 +12,34 @@ const IndexContainer = () => {
   const [subtopics, setSubtopics] = useState({});
   const [papers, setPapers] = useState({});
 
+  const [page, setPage] = useState(1);
+  const [topicValue, setTopicValue] = useState("");
+  const [subtopicValue, setSubtopicValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     get("/topics/").then(({ payload }) => {
       const { topics: fetchedTopics, subtopics: fetchedSubtopics } = payload;
       setTopics(fetchedTopics);
       setSubtopics(fetchedSubtopics);
     });
-    get("/papers/").then(({ payload }) => {
-      setPapers(payload);
-    });
   }, []);
 
+  useEffect(() => {
+    get("/papers/", {
+      topic: topicValue,
+      subtopic: subtopicValue,
+      search: searchValue,
+      page,
+    }).then(({ payload }) => {
+      setPapers(payload);
+    });
+  }, [topicValue, subtopicValue, searchValue, page]);
+
   const onFilter = (topic, subtopic, search) => {
-    console.log("onFilter:", topic, subtopic, search);
+    setTopicValue(topic);
+    setSubtopicValue(subtopic);
+    setSearchValue(search);
   };
 
   return (
