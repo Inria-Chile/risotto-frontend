@@ -36,6 +36,8 @@ const styles = {
   },
   divider: {
     position: "relative",
+    margin: 0,
+    padding: "16px 0",
   },
   dividerText: {
     backgroundColor: "white",
@@ -47,7 +49,7 @@ const styles = {
     bottom: 0,
     left: 0,
     right: 0,
-    top: "0.5em",
+    top: "1.5em",
     borderTop: "1px solid #dce0e3",
     zIndex: -1,
   },
