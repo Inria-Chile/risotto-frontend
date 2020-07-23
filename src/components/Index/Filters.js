@@ -82,21 +82,21 @@ const Filters = ({ topics, subtopics, onFilter }) => {
       <Divider text="See relevant papers" />
       <section style={styles.inputsContainer}>
         <DropdownInput
-          key="topics"
+          id="topics"
           label="Topic"
           data={topics}
           value={topicValue}
           onChange={onTopicChange}
         />
         <DropdownInput
-          key="subtopics"
+          id="subtopics"
           label="Subtopic"
           data={subtopics[topicValue]}
           value={subtopicValue}
           onChange={onSubtopicChange}
         />
         <TextInput
-          key="search"
+          id="search"
           label="Search"
           value={searchValue}
           onChange={onSearchChange}
@@ -120,10 +120,10 @@ const Divider = ({ text }) => (
 const DropdownInput = (props) => {
   const { data, value, onChange } = props;
   return (
-    <_Input {...props}>
+    <BaseInput {...props}>
       <select
         style={styles.input}
-        id={props.key}
+        id={props.id}
         value={value}
         onChange={onChange}
       >
@@ -135,22 +135,22 @@ const DropdownInput = (props) => {
             </option>
           ))}
       </select>
-    </_Input>
+    </BaseInput>
   );
 };
 
 const TextInput = (props) => {
   const { value, onChange } = props;
   return (
-    <_Input {...props}>
+    <BaseInput {...props}>
       <input
         style={styles.input}
         type="text"
-        id={props.key}
+        id={props.id}
         value={value}
         onChange={onChange}
       />
-    </_Input>
+    </BaseInput>
   );
 };
 
@@ -160,10 +160,10 @@ const ButtonInput = ({ text, onClick }) => (
   </div>
 );
 
-const _Input = ({ key, label, children }) => (
+const BaseInput = ({ id, label, children }) => (
   <div style={styles.inputContainer}>
     <div style={styles.labelContainer}>
-      <label for={key}>{label}</label>
+      <label htmlFor={id}>{label}</label>
     </div>
     <div>{children}</div>
   </div>
