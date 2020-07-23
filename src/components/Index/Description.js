@@ -8,7 +8,7 @@ const styles = {
   },
 };
 
-const Description = ({}) => (
+const Description = () => (
   <>
     <section style={styles.boldSection}>
       <h2>Risotto in a few words...</h2>
