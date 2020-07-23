@@ -10,12 +10,16 @@ import PaperSet from "../components/Index/PapersSet";
 const IndexContainer = () => {
   const [topics, setTopics] = useState([]);
   const [subtopics, setSubtopics] = useState({});
+  const [papers, setPapers] = useState({});
 
   useEffect(() => {
     get("/topics/").then(({ payload }) => {
       const { topics: fetchedTopics, subtopics: fetchedSubtopics } = payload;
       setTopics(fetchedTopics);
       setSubtopics(fetchedSubtopics);
+    });
+    get("/papers/").then(({ payload }) => {
+      setPapers(payload);
     });
   }, []);
 
@@ -27,7 +31,7 @@ const IndexContainer = () => {
     <Layout>
       <Description />
       <Filters topics={topics} subtopics={subtopics} onFilter={onFilter} />
-      <PaperSet />
+      <PaperSet {...papers} />
     </Layout>
   );
 };

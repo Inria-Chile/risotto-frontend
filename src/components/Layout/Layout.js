@@ -12,6 +12,7 @@ const styles = {
   container: {
     maxWidth: "1136px",
     margin: "0 auto",
+    fontSize: "13px",
   },
 };
 
