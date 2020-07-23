@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const styles = {
   inputsContainer: {
@@ -53,20 +53,62 @@ const styles = {
   },
 };
 
-const Filters = ({}) => (
-  <>
-    <Divider text="See relevant papers" />
-    <section style={styles.inputsContainer}>
-      <DropdownInput key="topics" label="Topic" />
-      <DropdownInput key="subtopics" label="Subtopic" />
-      <TextInput key="search" label="Search" />
+const Filters = ({ topics, subtopics, onFilter }) => {
+  const [topicValue, setTopicValue] = useState("");
+  const [subtopicValue, setSubtopicValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+
+  const onTopicChange = (ev) => {
+    const { value } = ev.target;
+    setTopicValue(value);
+  };
+
+  const onSubtopicChange = (ev) => {
+    const { value } = ev.target;
+    setSubtopicValue(value);
+  };
+
+  const onSearchChange = (ev) => {
+    const { value } = ev.target;
+    setSearchValue(value);
+  };
+
+  const onFilterClick = () => {
+    onFilter(topicValue, subtopicValue, searchValue);
+  };
+
+  return (
+    <section>
+      <Divider text="See relevant papers" />
+      <section style={styles.inputsContainer}>
+        <DropdownInput
+          key="topics"
+          label="Topic"
+          data={topics}
+          value={topicValue}
+          onChange={onTopicChange}
+        />
+        <DropdownInput
+          key="subtopics"
+          label="Subtopic"
+          data={subtopics[topicValue]}
+          value={subtopicValue}
+          onChange={onSubtopicChange}
+        />
+        <TextInput
+          key="search"
+          label="Search"
+          value={searchValue}
+          onChange={onSearchChange}
+        />
+      </section>
+      <section style={styles.buttonContainer}>
+        <ButtonInput text="Filter" onClick={onFilterClick} />
+      </section>
+      <Divider />
     </section>
-    <section style={styles.buttonContainer}>
-      <ButtonInput text="Filter" />
-    </section>
-    <Divider />
-  </>
-);
+  );
+};
 
 const Divider = ({ text }) => (
   <p style={styles.divider}>
@@ -75,24 +117,46 @@ const Divider = ({ text }) => (
   </p>
 );
 
-const DropdownInput = (props) => (
-  <_Input {...props}>
-    <select style={styles.input} id={props.key}>
-      <option value="">All</option>
-      <option value="cat">Cat</option>
-    </select>
-  </_Input>
-);
+const DropdownInput = (props) => {
+  const { data, value, onChange } = props;
+  return (
+    <_Input {...props}>
+      <select
+        style={styles.input}
+        id={props.key}
+        value={value}
+        onChange={onChange}
+      >
+        <option value="">All</option>
+        {data &&
+          data.map(([label, value]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+      </select>
+    </_Input>
+  );
+};
 
-const TextInput = (props) => (
-  <_Input {...props}>
-    <input style={styles.input} type="text" id={props.key} />
-  </_Input>
-);
+const TextInput = (props) => {
+  const { value, onChange } = props;
+  return (
+    <_Input {...props}>
+      <input
+        style={styles.input}
+        type="text"
+        id={props.key}
+        value={value}
+        onChange={onChange}
+      />
+    </_Input>
+  );
+};
 
-const ButtonInput = ({ text }) => (
+const ButtonInput = ({ text, onClick }) => (
   <div>
-    <input style={styles.button} type="button" value={text} />
+    <input style={styles.button} type="button" value={text} onClick={onClick} />
   </div>
 );
 
