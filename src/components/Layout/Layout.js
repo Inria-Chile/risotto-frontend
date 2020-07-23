@@ -10,7 +10,7 @@ const styles = {
     background: "#e53411",
   },
   container: {
-    maxWidth: "960px",
+    maxWidth: "1136px",
     margin: "0 auto",
   },
 };
