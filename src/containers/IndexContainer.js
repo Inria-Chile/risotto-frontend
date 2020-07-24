@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { get } from "../networking";
 
+import "../components/Index/Index.css";
+
 import Layout from "../components/Layout/Layout";
 import Description from "../components/Index/Description";
 import Filters from "../components/Index/Filters";

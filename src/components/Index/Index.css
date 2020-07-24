@@ -1,0 +1,17 @@
+#filterButton {
+  background-color: #384257;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  padding: 0 10px;
+  font-size: 13px;
+  height: 28px;
+  line-height: 28px;
+  border: none;
+  cursor: pointer;
+}
+
+.clickable:active {
+  color: rgba(0, 0, 0, 0.87) !important;
+  background-color: #bdbdbd !important;
+}

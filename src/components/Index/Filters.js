@@ -18,17 +18,6 @@ const styles = {
     padding: "4px 8px",
     boxSizing: "border-box",
   },
-  button: {
-    backgroundColor: "#384257",
-    color: "white",
-    fontWeight: "bold",
-    width: "150px",
-    padding: "0 10px",
-    fontSize: "13px",
-    height: "28px",
-    lineHeight: "28px",
-    border: "none",
-  },
   buttonContainer: {
     display: "flex",
     justifyContent: "center",
@@ -158,7 +147,13 @@ const TextInput = (props) => {
 
 const ButtonInput = ({ text, onClick }) => (
   <div>
-    <input style={styles.button} type="button" value={text} onClick={onClick} />
+    <input
+      id="filterButton"
+      className="clickable"
+      type="button"
+      value={text}
+      onClick={onClick}
+    />
   </div>
 );
 

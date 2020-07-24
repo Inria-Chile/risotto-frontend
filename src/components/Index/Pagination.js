@@ -6,7 +6,6 @@ import {
   faAngleLeft,
   faAngleDoubleRight,
   faAngleDoubleLeft,
-  faBorderNone,
 } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
@@ -108,10 +107,18 @@ const Pagination = ({ page, num_pages: numPages, setPage, itemsPerPage }) => {
       <div style={styles.buttonsContainer}>
         {page > 1 ? (
           <>
-            <button style={styles.navButton} onClick={goToFirstPage}>
+            <button
+              className="clickable"
+              style={styles.navButton}
+              onClick={goToFirstPage}
+            >
               <FontAwesomeIcon icon={faAngleDoubleLeft} />
             </button>
-            <button style={styles.navButton} onClick={decreasePage}>
+            <button
+              className="clickable"
+              style={styles.navButton}
+              onClick={decreasePage}
+            >
               <FontAwesomeIcon icon={faAngleLeft} />
             </button>
           </>
@@ -121,10 +128,18 @@ const Pagination = ({ page, num_pages: numPages, setPage, itemsPerPage }) => {
 
         {page < numPages ? (
           <>
-            <button style={styles.navButton} onClick={increasePage}>
+            <button
+              className="clickable"
+              style={styles.navButton}
+              onClick={increasePage}
+            >
               <FontAwesomeIcon icon={faAngleRight} />
             </button>
-            <button style={styles.navButton} onClick={goToLastPage}>
+            <button
+              className="clickable"
+              style={styles.navButton}
+              onClick={goToLastPage}
+            >
               <FontAwesomeIcon icon={faAngleDoubleRight} />
             </button>
           </>
