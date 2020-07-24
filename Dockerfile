@@ -6,6 +6,8 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm install
 
+ARG REACT_APP_BACKEND_URL
+RUN echo $REACT_APP_BACKEND_URL
 COPY . .
 RUN npm run build
 
