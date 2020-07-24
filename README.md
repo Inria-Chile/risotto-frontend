@@ -6,7 +6,9 @@ More information is available at RISOTTO's homepage: https://inria-chile.github.
 
 ## How to run locally
 
-In order to launch the local development server, run the following command:
+In order to launch the local development environment, we suggest to use the [integration repository](https://github.com/Inria-Chile/risotto-integration).
+
+If a standalone development server is needed, run the following command:
 
 ```bash
 $ npm start
