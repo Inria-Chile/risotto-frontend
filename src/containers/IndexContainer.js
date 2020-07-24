@@ -52,16 +52,19 @@ const IndexContainer = () => {
     <Layout>
       <Description />
       <Filters topics={topics} subtopics={subtopics} onFilter={onFilter} />
-      {papers.papers && papers.papers.length > 0 && (
-        <>
-          <PaperSet {...papers} />
-          <Pagination
-            setPage={setPage}
-            itemsPerPage={ITEMS_PER_PAGE}
-            {...papers}
-          />
-        </>
-      )}
+      {papers.papers &&
+        (papers.papers.length > 0 ? (
+          <>
+            <PaperSet {...papers} />
+            <Pagination
+              setPage={setPage}
+              itemsPerPage={ITEMS_PER_PAGE}
+              {...papers}
+            />
+          </>
+        ) : (
+          <h3>There aren't relevant papers</h3>
+        ))}
     </Layout>
   );
 };
